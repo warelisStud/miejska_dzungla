@@ -1,0 +1,124 @@
+/* Resetowanie domyślnych stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Nagłówek */
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+header .logo {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.search-bar {
+    margin: 10px 0;
+}
+
+.search-bar input {
+    padding: 5px;
+    width: 200px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #4CAF50;
+    border: none;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    background-color: #388E3C;
+}
+
+/* Sekcja produktów */
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+main h2, main h3 {
+    margin-bottom: 15px;
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.image-placeholder {
+  background-color: #e0e0e0; /* Szare tło */
+  width: 100%; /* Szerokość dopasowana do rodzica */
+  max-width: 200px; /* Maksymalna szerokość */
+  height: 200px; /* Stała wysokość */
+  margin: 0 auto 15px auto; /* Wycentrowanie obrazka */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 16px;
+  border-radius: 5px;
+  overflow: hidden; /* Ukrycie wystającej zawartości */
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #388E3C;
+}
+
+/* Stopka */
+footer {
+    background-color: #4CAF50;
+    padding: 10px;
+    text-align: center;
+}
