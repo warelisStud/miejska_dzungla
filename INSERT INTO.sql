@@ -22,7 +22,18 @@ VALUES
     ('Kaktus', 'Mały kaktus do biura', 'Cactus', 15.99, 60, NULL),
     ('Hortensja', 'Roślina ogrodowa, piękne kwiaty', 'Hydrangea', 35.99, 80, NULL),
     ('Bananowiec', 'Roślina tropikalna, do wnętrz i ogrodów', 'Banana Tree', 59.99, 40, NULL),
-    ('Pelargonia', 'Roślina balkonowa, kwitnąca na wiosnę', 'Geranium', 19.99, 150, NULL);
+    ('Pelargonia', 'Roślina balkonowa, kwitnąca na wiosnę', 'Geranium', 19.99, 150, NULL),
+    ('Dracena', 'Roślina doniczkowa, znana z długich liści', 'Dracaena', 49.99, 70, NULL),
+    ('Zielistka', 'Roślina doniczkowa, łatwa w hodowli, odporna na warunki domowe', 'Chlorophytum', 18.99, 90, NULL),
+    ('Sansewieria', 'Roślina doniczkowa, odporna na suszę, idealna do biura', 'Sansevieria', 34.99, 50, NULL),
+    ('Zamiokulkas', 'Roślina doniczkowa, tolerująca mało światła', 'Zamioculcas zamiifolia', 42.99, 60, NULL),
+    ('Pilea', 'Pilea, roślina doniczkowa o okrągłych liściach', 'Pilea Peperomioides', 29.99, 40, NULL),
+    ('Skrzydłokwiat', 'Roślina doniczkowa z białymi kwiatami', 'Spathiphyllum', 27.99, 75, NULL),
+    ('Koleus', 'Roślina doniczkowa o kolorowych liściach', 'Coleus', 22.99, 50, NULL),
+    ('Fiołek afrykański', 'Roślina doniczkowa o pięknych, kolorowych kwiatach', 'Saintpaulia', 19.99, 80, NULL),
+    ('Epipremnum', 'Roślina doniczkowa o długich pędach, idealna do wnętrz', 'Pothos', 26.99, 120, NULL),
+    ('Begonia', 'Roślina doniczkowa o ozdobnych liściach', 'Begonia', 32.99, 60, NULL),
+    ('Episcia', 'Roślina doniczkowa o dekoracyjnych kwiatach', 'Episcia', 25.99, 50, NULL);
 INSERT INTO Product_category (product_id, category_id)
 VALUES 
     (1, 1),  -- Aloes -> Rośliny doniczkowe
