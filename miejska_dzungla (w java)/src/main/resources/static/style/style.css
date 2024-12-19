@@ -42,8 +42,14 @@ body {
 header {
     background-color: #4CAF50;
     color: white;
-    padding: 20px 0;
+    padding: 0;
     text-align: center;
+}
+header img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 header .logo {
@@ -127,16 +133,8 @@ button:hover {
     background-color: #388E3C;
 }
 
-/* Stopka */
 footer {
     background-color: #4CAF50;
     padding: 10px;
-    text-align: center;
-}
-#terms {
-    text-align: left;
-    text-indent: 20px;
-}
-#terms h1 {
     text-align: center;
 }

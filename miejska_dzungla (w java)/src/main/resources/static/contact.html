@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miejska dżungla</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/style_contact.css">
     <link rel="icon" type="image/x-icon" href="other_photos/favicon.ico">
 </head>
 <body>
     <!-- Nagłówek i pasek nawigacyjny -->
     <header>
-        <h1 class="logo">Miejska dżungla</h1>
+        <img src="/images/banner2.jpg" alt="banner">
         <div class="search-bar">
             <input type="text" placeholder="Szukaj roślin...">
             <button>Szukaj</button>
@@ -27,6 +28,30 @@
 
     <!-- Sekcja główna -->
     <main>
+        <h3>Kontakt z nami (nie odczytujemy SMS-ów)</h3>
+        Pracujemy od poniedziałku do piątku w godzinach 9:00-14:00. Tylko dla połączeń głosowych. Nie odczytujemy wiadomości SMS.<br/><br/>
+        <h4>Wyślij wiadomość</h4>
+        <form>
+            Wybierz dział: <select name="dzial" id="dzial">
+                <option value="web">Web</option>
+                <option value="customer">Obsługa klienta</option>
+                </select><br/><br/>
+            Twój e-mail: <input type="email" name="email" id="email" placeholder="twój email"><br/><br/>
+            <textarea name="text" id="text" rows="4" cols="50" ></textarea><br/><br/>
+            <a href ="mailto:kontakt@miejska-dzungla.pl."><button>Wyślij maila</button></a>
+        </form>
+        <div id="contact">
+        <br/><br/>
+        <h3>Dane kontaktowe</h3> 
+        Miejska dżungla
+        ul. Wysoka 23, <br/>
+        41-200 Sosnowiec
+        <br/>
+        123 456 789 <br/>
+        pn-pt 9:00-14:00
+        <br/>
+        <a href ="mailto:kontakt@miejska-dzungla.pl.">kontakt@miejska-dzungla.pl.</a>
+        </div>
     </main>
 
     <!-- Sekcja linków -->
