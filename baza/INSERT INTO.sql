@@ -5,6 +5,18 @@ VALUES
     ('Akcesoria ogrodowe', 'Akcesoria ogrodowe', NULL),
     ('Rośliny tropikalne', 'Rośliny tropikalne', NULL),
     ('Rośliny balkonowe', 'Rośliny balkonowe', NULL);
+INSERT INTO Customer (name, mobile_number, email_address, address) VALUES
+('Marta Kwiatkowska', 789012345, 'marta.kwiatkowska@example.com', 'ul. Lipowa 8, Gdańsk'),
+('Tomasz Wiśniewski', 654321098, 'tomasz.wisniewski@example.com', 'ul. Polna 12, Łódź'),
+('Karolina Zielińska', 567890123, 'karolina.zielinska@example.com', 'ul. Krótka 5, Szczecin'),
+('Robert Kamiński', 456789012, 'robert.kaminski@example.com', 'ul. Świerkowa 15, Katowice'),
+('Ewelina Majewska', 345678901, 'ewelina.majewska@example.com', 'ul. Wiosenna 22, Białystok'),
+('Andrzej Dąbrowski', 234567890, 'andrzej.dabrowski@example.com', 'ul. Jesionowa 7, Toruń'),
+('Monika Wójcik', 123890456, 'monika.wojcik@example.com', 'ul. Chmielna 9, Lublin'),
+('Krzysztof Piotrowski', 678901234, 'krzysztof.piotrowski@example.com', 'ul. Słoneczna 11, Olsztyn'),
+('Agnieszka Kowalczyk', 890123456, 'agnieszka.kowalczyk@example.com', 'ul. Leśna 2, Rzeszów'),
+('Paweł Lewandowski', 123456780, 'pawel.lewandowski@example.com', 'ul. Spacerowa 10, Kielce');
+
 INSERT INTO User (password, name, mobile_number, email_address, is_active, address) VALUES
 (X'abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890', 'Admin', 123456789, 'admin@example.com', TRUE, 'ul. Główna 1'),
 (X'1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef', 'Magdalena Kaczmarek', 234567890, 'magda@example.com', TRUE, 'ul. Poziomkowa 3'),
