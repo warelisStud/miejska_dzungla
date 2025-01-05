@@ -1,5 +1,6 @@
-package com.example.miejska_dzungla.domain;
+package com.example.miejska_dzungla.order;
 
+import com.example.miejska_dzungla.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 @Table(name = "orders")
-public class Orders {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false, unique = true)
@@ -30,6 +31,6 @@ public class Orders {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private Users user; // relationship with User class, many to one
+    private User user; // relationship with User class, many to one
 
 }

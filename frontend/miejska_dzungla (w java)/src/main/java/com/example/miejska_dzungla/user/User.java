@@ -1,4 +1,4 @@
-package com.example.miejska_dzungla.domain;
+package com.example.miejska_dzungla.user;
 
 
 import jakarta.persistence.*;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", nullable = false, unique = true)
@@ -34,5 +34,7 @@ public class Users {
     private String address;
 
     //nie robimy created_at
+
+
 
 }

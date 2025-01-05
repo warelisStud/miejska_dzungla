@@ -1,4 +1,4 @@
-package com.example.miejska_dzungla.domain;
+package com.example.miejska_dzungla.order;
 
 public enum OrderStatus {
     PENDING,
