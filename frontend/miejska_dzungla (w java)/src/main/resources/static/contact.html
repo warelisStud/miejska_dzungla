@@ -28,30 +28,37 @@
 
     <!-- Sekcja główna -->
     <main>
-        <h3>Kontakt z nami (nie odczytujemy SMS-ów)</h3>
-        Pracujemy od poniedziałku do piątku w godzinach 9:00-14:00. Tylko dla połączeń głosowych. Nie odczytujemy wiadomości SMS.<br/><br/>
-        <h4>Wyślij wiadomość</h4>
-        <form>
-            Wybierz dział: <select name="dzial" id="dzial">
-                <option value="web">Web</option>
-                <option value="customer">Obsługa klienta</option>
-                </select><br/><br/>
-            Twój e-mail: <input type="email" name="email" id="email" placeholder="twój email"><br/><br/>
-            <textarea name="text" id="text" rows="4" cols="50" ></textarea><br/><br/>
-            <a href ="mailto:kontakt@miejska-dzungla.pl."><button>Wyślij maila</button></a>
-        </form>
-        <div id="contact">
-        <br/><br/>
-        <h3>Dane kontaktowe</h3> 
-        Miejska dżungla
-        ul. Wysoka 23, <br/>
-        41-200 Sosnowiec
-        <br/>
-        123 456 789 <br/>
-        pn-pt 9:00-14:00
-        <br/>
-        <a href ="mailto:kontakt@miejska-dzungla.pl.">kontakt@miejska-dzungla.pl.</a>
-        </div>
+        <section id="contact-form">
+            <h3>Skontaktuj się z nami</h3>
+            <p>Pracujemy od poniedziałku do piątku w godzinach 9:00–14:00. Tylko połączenia głosowe, nie odczytujemy wiadomości SMS.</p>
+            <form>
+                <label for="dzial">Wybierz dział:</label>
+                <select name="dzial" id="dzial">
+                    <option value="web">Web</option>
+                    <option value="customer">Obsługa klienta</option>
+                </select>
+
+                <label for="email">Twój e-mail:</label>
+                <input type="email" name="email" id="email" placeholder="Twój email">
+
+                <label for="text">Opisz swój problem:</label>
+                <textarea name="text" id="text" rows="4" placeholder="Wpisz swoją wiadomość..."></textarea>
+
+                <button type="submit">Wyślij wiadomość</button>
+            </form>
+        </section>
+
+        <section id="contact-info">
+            <h3>Dane kontaktowe</h3>
+            <address>
+                <strong>Miejska dżungla</strong><br>
+                ul. Wysoka 23<br>
+                41-200 Sosnowiec<br>
+                <a href="tel:+48123456789">123 456 789</a><br>
+                pn-pt 9:00–14:00<br>
+                <a href="mailto:kontakt@miejska-dzungla.pl">kontakt@miejska-dzungla.pl</a>
+            </address>
+        </section>
     </main>
 
     <!-- Sekcja linków -->

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miejska dżungla</title>
+    <title>Miejska Dżungla</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/style_account.css">
     <link rel="icon" type="image/x-icon" href="other_photos/favicon.ico">
 </head>
 <body>
@@ -27,17 +28,73 @@
 
     <!-- Sekcja główna -->
     <main>
+        <div id="account-container">
+            <!-- Informacje o koncie -->
+            <div id="user-info" style="display: none;">
+                <h2>Witaj, <span id="username"></span>!</h2>
+                <p>Email: <span id="email"></span></p>
+                <button class="btn-small" onclick="logout()">Wyloguj się</button>
+            </div>
+
+            <!-- Formularze logowania i rejestracji -->
+            <div id="auth-forms" style="display: none;">
+                <div class="form-box">
+                    <h3>Zaloguj się</h3>
+                    <form action="/login" method="post">
+                        <input type="text" name="username" id="username" placeholder="Nazwa użytkownika" required>
+                        <input type="password" name="password" id="password" placeholder="Hasło" required>
+                        <button type="submit" class="btn-small">Zaloguj się</button>
+                    </form>
+                </div>
+                <div class="form-box">
+                    <h3>Zarejestruj się</h3>
+                    <form action="/register" method="post">
+                        <input type="text" name="username" id="reg-username" placeholder="Nazwa użytkownika" required>
+                        <input type="email" name="email" id="reg-email" placeholder="Email" required>
+                        <input type="password" name="password" id="reg-password" placeholder="Hasło" required>
+                        <button type="submit" class="btn-small">Zarejestruj się</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Sekcja linków -->
     <footer>
         <nav>
-        <ul>
-            <li><a id="link" href="policy.html">Polityka prywatności</a></li>
-            <li><a id="link" href="terms.html">Regulamin</a></li>
-            <li><a id="link" href="contact.html">Kontakt</a></li>
-        </ul>
+            <ul>
+                <li><a id="link" href="policy.html">Polityka prywatności</a></li>
+                <li><a id="link" href="terms.html">Regulamin</a></li>
+                <li><a id="link" href="contact.html">Kontakt</a></li>
+            </ul>
         </nav>
     </footer>
+
+    <script>
+        fetch('/account/info', { method: 'GET' })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Użytkownik niezalogowany");
+                }
+            })
+            .then(user => {
+                document.getElementById("auth-forms").style.display = "none";
+                document.getElementById("user-info").style.display = "block";
+                document.getElementById("username").textContent = user.username;
+                document.getElementById("email").textContent = user.email;
+            })
+            .catch(() => {
+                document.getElementById("auth-forms").style.display = "block";
+                document.getElementById("user-info").style.display = "none";
+            });
+
+        function logout() {
+            fetch('/logout', { method: 'POST' }).then(() => {
+                window.location.reload();
+            });
+        }
+    </script>
 </body>
 </html>
