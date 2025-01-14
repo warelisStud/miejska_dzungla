@@ -40,18 +40,20 @@
             <div id="auth-forms" style="display: none;">
                 <div class="form-box">
                     <h3>Zaloguj się</h3>
-                    <form action="/login" method="post">
-                        <input type="text" name="username" id="username" placeholder="Nazwa użytkownika" required>
-                        <input type="password" name="password" id="password" placeholder="Hasło" required>
+                    <form id="login-form">
+                        <input type="text" name="username" id="login-username" placeholder="Nazwa użytkownika" required>
+                        <input type="password" name="password" id="login-password" placeholder="Hasło" required>
+                        <div id="login-error" class="error-message"></div>
                         <button type="submit" class="btn-small">Zaloguj się</button>
                     </form>
                 </div>
                 <div class="form-box">
                     <h3>Zarejestruj się</h3>
-                    <form action="/register" method="post">
+                    <form id="registration-form">
                         <input type="text" name="username" id="reg-username" placeholder="Nazwa użytkownika" required>
                         <input type="email" name="email" id="reg-email" placeholder="Email" required>
                         <input type="password" name="password" id="reg-password" placeholder="Hasło" required>
+                        <div id="registration-error" class="error-message"></div>
                         <button type="submit" class="btn-small">Zarejestruj się</button>
                     </form>
                 </div>
@@ -95,6 +97,120 @@
                 window.location.reload();
             });
         }
+        // Obsługa rejestracji
+        document.getElementById('registration-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('reg-username').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const password = document.getElementById('reg-password').value.trim();
+
+        const errorDiv = document.getElementById('registration-error');
+        errorDiv.textContent = '';
+            // Walidacja danych
+            if (!validateEmail(email)) {
+                errorDiv.textContent = 'Wprowadź poprawny adres e-mail.';
+                   return;
+            }
+
+            if (password.length < 8) {
+                 errorDiv.textContent = 'Hasło musi mieć co najmniej 8 znaków.';
+                   return;
+               }
+               const payload = {
+                username,
+                emailAddress: email,
+                userPassword: password
+                };
+
+            try {
+               const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    alert('Rejestracja zakończona sukcesem!');
+                    //e.target.reset(); // Reset formularza po rejestracji
+                } else {
+                    const errorData = await response.json();
+                    errorDiv.textContent = `Rejestracja nie powiodła się: ${errorData.message}`;
+                    }
+                } catch (error) {
+                    errorDiv.textContent = 'Nie można połączyć się z serwerem. Spróbuj ponownie później.';
+                }
+                });
+
+        // Obsługa logowania
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+
+            const errorDiv = document.getElementById('login-error');
+            errorDiv.textContent = '';
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (response.ok) {
+                    alert('Logowanie zakończone sukcesem!');
+                    window.location.reload();
+                } else {
+                    errorDiv.textContent = 'Nieprawidłowe dane logowania.';
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Nie można połączyć się z serwerem. Spróbuj ponownie później.';
+            }
+        });
+
+        // Walidacja adresu e-mail
+        function validateEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+        document.getElementById('registration-form').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Zatrzymanie domyślnego wysyłania formularza
+
+    const username = document.getElementById('reg-username').value;
+    const email = document.getElementById('reg-email').value;
+    const password = document.getElementById('reg-password').value;
+
+    const payload = {
+        username: username,
+        emailAddress: email,
+        userPassword: password,
+        mobileNumber: '', // Dodaj inne pola w razie potrzeby
+        address: ''
+    };
+
+    try {
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+            alert('Rejestracja zakończona sukcesem!');
+        } else {
+            const errorData = await response.json();
+            alert(`Błąd: ${errorData.message}`);
+        }
+    } catch (error) {
+        console.error('Błąd:', error);
+        alert('Nie udało się połączyć z serwerem.');
+    }
+});
+
     </script>
 </body>
 </html>
