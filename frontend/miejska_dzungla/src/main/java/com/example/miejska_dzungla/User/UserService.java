@@ -17,7 +17,7 @@ public class UserService {
     public User getUserById(Long id){
         return userRepository.findById(id).orElse(null);
     }
-    public User createUser(User user){
+    public synchronized User createUser(User user) {
         return userRepository.save(user);
     }
     public User updateUser(Long id, User updatedUser) {
@@ -50,5 +50,12 @@ public class UserService {
         return userRepository.existsByMobileNumber(mobileNumber);
     }
 
+    public boolean authenticateUser(String username, String password) {
+        User user = userRepository.findByUsername(username);
+        if (user != null && user.getUserPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
 
 }

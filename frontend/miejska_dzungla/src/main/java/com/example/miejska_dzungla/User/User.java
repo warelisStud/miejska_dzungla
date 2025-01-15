@@ -14,16 +14,16 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(name = "user_password", length = 20)
+    @Column(name = "user_password")
     private String UserPassword;
 
-    @Column(name = "mobile_number", length = 15)
+    @Column(name = "mobile_number")
     private String mobileNumber;
 
-    @Column(name = "email_address")
+    @Column(name = "email_address",unique = true)
     private String emailAddress;
 
     @Column(name = "is_active")

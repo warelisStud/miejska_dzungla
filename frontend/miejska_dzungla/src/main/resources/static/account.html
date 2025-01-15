@@ -100,6 +100,10 @@
         // Obsługa rejestracji
         document.getElementById('registration-form').addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        const submitButton = e.target.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+
         const username = document.getElementById('reg-username').value.trim();
         const email = document.getElementById('reg-email').value.trim();
         const password = document.getElementById('reg-password').value.trim();
@@ -109,11 +113,13 @@
             // Walidacja danych
             if (!validateEmail(email)) {
                 errorDiv.textContent = 'Wprowadź poprawny adres e-mail.';
+                submitButton.disabled = false;
                    return;
             }
 
             if (password.length < 8) {
                  errorDiv.textContent = 'Hasło musi mieć co najmniej 8 znaków.';
+                 submitButton.disabled = false;
                    return;
                }
                const payload = {
@@ -139,9 +145,17 @@
                     errorDiv.textContent = `Rejestracja nie powiodła się: ${errorData.message}`;
                     }
                 } catch (error) {
+                    console.error('Błąd połączenia:', error);
                     errorDiv.textContent = 'Nie można połączyć się z serwerem. Spróbuj ponownie później.';
+                } finally {
+                    submitButton.disabled = false; // Odblokuj przycisk niezależnie od wyniku
                 }
                 });
+
+                function validateEmail(email) {
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailPattern.test(email);
+                }
 
         // Obsługa logowania
         document.getElementById('login-form').addEventListener('submit', async (e) => {
@@ -153,7 +167,7 @@
             errorDiv.textContent = '';
 
             try {
-                const response = await fetch('/login', {
+                const response = await fetch('/users/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
@@ -161,7 +175,7 @@
 
                 if (response.ok) {
                     alert('Logowanie zakończone sukcesem!');
-                    window.location.reload();
+                    window.location.href = '/'
                 } else {
                     errorDiv.textContent = 'Nieprawidłowe dane logowania.';
                 }

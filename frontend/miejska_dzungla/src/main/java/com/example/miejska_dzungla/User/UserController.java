@@ -1,6 +1,8 @@
 package com.example.miejska_dzungla.User;
 
+import com.example.miejska_dzungla.Login.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +41,17 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long id){
         boolean deleted = userService.deleteUser(id);
         return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+        boolean authenticated = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
+
+        if (authenticated) {
+            return ResponseEntity.ok("Zalogowano pomyślnie");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Nieprawidłowa nazwa użytkownika lub hasło");
+        }
     }
 
 
