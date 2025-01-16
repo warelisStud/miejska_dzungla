@@ -28,14 +28,21 @@
 
     <!-- Sekcja główna -->
     <main>
-        <div id="account-container">
-            <!-- Informacje o koncie -->
+        <!-- Informacje o koncie -->
             <div id="user-info" style="display: none;">
                 <h2>Witaj, <span id="username"></span>!</h2>
                 <p>Email: <span id="email"></span></p>
+                <p>Numer telefonu: <span id="phone"></span></p>
                 <button class="btn-small" onclick="logout()">Wyloguj się</button>
-            </div>
 
+                <!-- Historia zamówień -->
+                <div id="order-history" style="display: none;">
+                    <h3>Twoja historia zamówień</h3>
+                    <ul id="orders-list">
+                        <!-- Lista zamówień pojawi się tutaj -->
+                    </ul>
+                </div>
+            </div>
             <!-- Formularze logowania i rejestracji -->
             <div id="auth-forms" style="display: none;">
                 <div class="form-box">
